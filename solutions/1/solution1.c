@@ -1,5 +1,5 @@
 #if 0
-	gcc -D_GNU_SOURCE $0 -o lesson1
+	gcc -std=c99 -g -D_GNU_SOURCE $0 -o solution1
 	exit
 #endif
 /* LESSON 1 - Strings */
@@ -42,17 +42,17 @@ int DudeWheresMyChar(const char *String, char Which)
         #define ERROR_JUST_HAY      -1
         #define ERROR_TRYPANOPHOBIA -2
 /**/
-int SubString(const char *Haystack, int HaystackSize, const char *Needle)
+int FindSubString(const char *Haystack, int HaystackSize, const char *Needle)
 {
     int NeedleSize = 0;
     for(const char *c = Needle; *c; ++c){
         ++NeedleSize;
     }
-    
+
     if(NeedleSize > HaystackSize){
         return ERROR_TRYPANOPHOBIA;
     }
-    
+
     for(int i = 0; i < HaystackSize; ++i){
         int j = i;
         for(const char *c = Needle; *c; ++c){
@@ -66,7 +66,7 @@ int SubString(const char *Haystack, int HaystackSize, const char *Needle)
             return i;
         }
     }
-    
+
     return ERROR_JUST_HAY;
 }
 
@@ -94,7 +94,7 @@ int MemoryHole(char **StrArray, int ArrayCount, const char *Word)
 {
     int WordLen = 0;
     int Found = 0;
-    
+
     for(const char* c = Word; *c; ++c) ++WordLen;
 
     for(int i = 0; i < ArrayCount; ++i){
@@ -103,8 +103,7 @@ int MemoryHole(char **StrArray, int ArrayCount, const char *Word)
         while(*end) ++end;
 
         int pos;
-        
-        while((pos = SubString(p, end - p, Word)), (end-p) > 0 && pos >= 0){
+        while((pos = FindSubString(p, end - p, Word)), pos >= 0){
             Found = 1;
             p += pos;
             for(int j = 0; j < WordLen; ++j){
@@ -112,7 +111,7 @@ int MemoryHole(char **StrArray, int ArrayCount, const char *Word)
             }
         }
     }
-    
+
     return Found;
 }
 
@@ -133,22 +132,22 @@ char *ConcatenateAll(const char **StrArray, int *SizeArray)
 {
     int ArraySize = 0;
     for(const char** c = StrArray; *c; ++c) ++ArraySize;
-    
+
     int Total = 0;
     for(int i = 0; i < ArraySize; ++i){
         Total += SizeArray[i];
     }
-    
+
     char *NewStr = malloc(Total + 1);
     char *p = NewStr;
-    
+
     for(int i = 0; i < ArraySize; ++i){
         for(int j = 0; j < SizeArray[i]; ++j){
             *p++ = StrArray[i][j];
         }
     }
     *p++ = 0;
-    
+
     return NewStr;
 }
 

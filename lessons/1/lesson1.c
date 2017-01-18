@@ -1,5 +1,5 @@
 #if 0
-	gcc -D_GNU_SOURCE $0 -o lesson1
+	gcc -std=c99 -g -D_GNU_SOURCE $0 -o lesson1
 	exit
 #endif
 /* LESSON 1 - Strings */
@@ -39,7 +39,7 @@ int DudeWheresMyChar(const char *String, char Which)
         #define ERROR_JUST_HAY      -1
         #define ERROR_TRYPANOPHOBIA -2
 /**/
-int SubString(const char *Haystack, int HaystackSize, const char *Needle)
+int FindSubString(const char *Haystack, int HaystackSize, const char *Needle)
 {
 
 }

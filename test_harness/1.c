@@ -37,7 +37,7 @@ void test_dude(void){
 }
 
 void test_substring(void){
-	puts("Testing [SubString]...");
+	puts("Testing [FindSubString]...");
 	
 	struct Test {
 		const char* haystack;
@@ -60,7 +60,7 @@ void test_substring(void){
 	
 	for(int i = 0; i < countof(tests); ++i){
 		struct Test* t = tests + i;
-		int ret = SubString(t->haystack, t->haylen, t->needle);
+		int ret = FindSubString(t->haystack, t->haylen, t->needle);
 		if(ret != t->expected){
 			printf(
 				"Test failed.\n"
@@ -205,6 +205,6 @@ int test_lesson(void){
 	test_substring();
 	test_memoryhole();
 	test_concat();
-	puts("Congratulations, You've passed Lesson 1!");
+	puts("Congratulations, You've completed Lesson 1!");
 	return 0;
 }
