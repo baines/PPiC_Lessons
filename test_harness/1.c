@@ -36,6 +36,39 @@ void test_dude(void){
 	puts("  Passed!");
 }
 
+void test_same(void){
+	puts("Testing [AreStringsTheSame]...");
+
+	struct Test {
+		const char* a;
+		const char* b;
+		int blen;
+		int expected;
+	} tests[] = {
+		{ "Dude" , "Dudette", 4, 1 },
+		{ "Hero" , "Heroine", 7, 0 },
+		{ "Ying" , "Yang"   , 1, 0 },
+		{ ""     , "full"   , 0, 1 },
+		{ "cat"  , "a"      , 1, 0 },
+		{ "C"    , "C"      , 1, 1 },
+	};
+
+	for(int i = 0; i < countof(tests); ++i){
+		struct Test* t = tests + i;
+		int ret = AreStringsTheSame(t->a, t->b, t->blen);
+		if(ret != t->expected){
+			printf(
+				"Test failed.\n"
+				"Input:\n\tStrA: '%s'\n\tStrB: '%.*s'\n\tStrBSize: %d\n"
+				"Output:\n\tGot: %d\n\tExpected: %d\n",
+				t->a, t->blen, t->b, t->blen, ret, t->expected
+			);
+			exit(1);
+		}
+	}
+	puts("  Passed!");
+}
+
 void test_substring(void){
 	puts("Testing [FindSubString]...");
 	
@@ -202,6 +235,7 @@ void test_concat(void){
 
 int test_lesson(void){
 	test_dude();
+	test_same();
 	test_substring();
 	test_memoryhole();
 	test_concat();

@@ -1,5 +1,5 @@
 #if 0
-	gcc -std=c99 -g -D_GNU_SOURCE $0 -o solution1
+	gcc -fsanitize=address -std=c99 -g -D_GNU_SOURCE $0 -o solution1
 	exit
 #endif
 /* LESSON 1 - Strings */
@@ -23,6 +23,24 @@ int DudeWheresMyChar(const char *String, char Which)
 }
 
 /* XXX: Implement me #2
+    Input:
+        StrA     -> A null terminated string.
+        StrB     -> A NON-null terminated string.
+		StrBSize -> The length of StrB in characters.
+    Requirement:
+		Compare StrA and StrB.
+		If all characters are equal, return 1
+		Otherwise return 0.
+*/
+int AreStringsTheSame(const char *StrA, const char *StrB, int StrBSize)
+{
+	for(int i = 0; i < StrBSize; ++i){
+		if(!StrA[i] || StrA[i] != StrB[i]) return 0;
+	}
+	return !StrA[StrBSize];
+}
+
+/* XXX: Implement me #3
     Input:
         Haystack     -> A NON null-terminated string which we are searching.
         HaystackSize -> The number of characters in the Haystack string.
@@ -70,7 +88,7 @@ int FindSubString(const char *Haystack, int HaystackSize, const char *Needle)
     return ERROR_JUST_HAY;
 }
 
-/* XXX: Implement me #3
+/* XXX: Implement me #4
     Input:
         StrArray   -> An array of null-terminated strings
         ArrayCount -> The number of strings in StrArray
@@ -115,7 +133,7 @@ int MemoryHole(char **StrArray, int ArrayCount, const char *Word)
     return Found;
 }
 
-/* XXX: Implement me #4
+/* XXX: Implement me #5
     Input:
         StrArray  -> An array of strings that are NOT null-terminated.
                      The array itself is terminated by a null pointer, however.
