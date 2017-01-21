@@ -23,11 +23,11 @@ int DudeWheresMyChar(const char *String, char Which)
     Input:
         StrA     -> A null terminated string.
         StrB     -> A NON-null terminated string.
-		StrBSize -> The length of StrB in characters.
+        StrBSize -> The length of StrB in characters.
     Requirement:
-		Compare StrA and StrB.
-		If all characters are equal, return 1
-		Otherwise return 0.
+        Compare StrA and StrB.
+        If all characters are equal, return 1
+        Otherwise return 0.
 */
 int AreStringsTheSame(const char *StrA, const char *StrB, int StrBSize)
 {
