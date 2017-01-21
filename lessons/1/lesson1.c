@@ -7,7 +7,7 @@
 
 /* XXX: Implement me #1
     Input:
-        String -> A null terminated string.
+        String -> A null-terminated string.
         Which  -> The character whose position we are looking for.
     Requirement:
         Return the index in String that Which first appears.
@@ -21,13 +21,13 @@ int DudeWheresMyChar(const char *String, char Which)
 
 /* XXX: Implement me #2
     Input:
-        StrA     -> A null terminated string.
-        StrB     -> A NON-null terminated string.
+        StrA     -> A null-terminated string.
+        StrB     -> A NON null-terminated string.
         StrBSize -> The length of StrB in characters.
     Requirement:
         Compare StrA and StrB.
         If all characters are equal, return 1
-        Otherwise return 0.
+        Otherwise, return 0.
 */
 int AreStringsTheSame(const char *StrA, const char *StrB, int StrBSize)
 {

@@ -47,7 +47,7 @@ void test_same(void){
     } tests[] = {
         { "Dude" , "Dudette", 4, 1 },
         { "Hero" , "Heroine", 7, 0 },
-        { "Ying" , "Yang"   , 1, 0 },
+        { "Yin"  , "Yang"   , 1, 0 },
         { ""     , "full"   , 0, 1 },
         { "cat"  , "a"      , 1, 0 },
         { "C"    , "C"      , 1, 1 },
