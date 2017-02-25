@@ -1,5 +1,5 @@
 #if 0
-	gcc -fsanitize=address -std=c99 -g -D_GNU_SOURCE $0 -o solution1
+	clang-3.8 -fsanitize=address -std=c99 -g -D_GNU_SOURCE $0 -o solution1
 	exit
 #endif
 /* LESSON 1 - Strings */
@@ -35,7 +35,7 @@ int DudeWheresMyChar(const char *String, char Which)
 int AreStringsTheSame(const char *StrA, const char *StrB, int StrBSize)
 {
     for(int i = 0; i < StrBSize; ++i){
-        if(!StrA[i] || StrA[i] != StrB[i]) return 0;
+        if(StrA[i] != StrB[i]) return 0;
     }
     return !StrA[StrBSize];
 }
@@ -72,15 +72,11 @@ int FindSubString(const char *Haystack, int HaystackSize, const char *Needle)
     }
 
     for(int i = 0; i < HaystackSize; ++i){
-        int j = i;
-        for(const char *c = Needle; *c; ++c){
-            if(Haystack[j] == *c){
-                ++j;
-            } else {
-                break;
-            }
-        }
-        if((j - i) == NeedleSize){
+        int j = 0;
+		while(Needle[j] && Needle[j] == Haystack[i + j]){
+			++j;
+		}
+        if(!Needle[j]){
             return i;
         }
     }
