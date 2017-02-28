@@ -214,6 +214,11 @@ void test_remove_user(void){
             __usr({ 952, 1535 }, { 341, 3590 }),
             123, 2, 0
         },
+        {
+            __usr({ 123, 456 }),
+            NULL,
+            123, 0, 0
+        },
     };
 
     for(int i = 0; i < countof(tests); ++i){
