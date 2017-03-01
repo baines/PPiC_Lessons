@@ -247,7 +247,7 @@ void test_remove_user(void){
 
         int idx = 0;
         for(user_ll* l = ret; l; l = l->Next, ++idx){
-            if(l->ID != t->expected[idx].ID || l->TotalKarma != t->expected[idx].TotalKarma){
+            if(idx >= t->expected_count || l->ID != t->expected[idx].ID || l->TotalKarma != t->expected[idx].TotalKarma){
 rip:
                 printf("Test Failed.\nInput:\n\tID: %d\n\tList: ", t->id);
                 __print_usr(t->users);
